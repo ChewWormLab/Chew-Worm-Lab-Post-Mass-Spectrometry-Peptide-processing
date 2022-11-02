@@ -122,17 +122,6 @@ class Peptide:
             ))
         return entireList #return the list as a variable of all the peptides in the csv document
     
-    ##check if a peptide is biotinylated
-    def is_Biotin(self): 
-        isPeptide = False
-        Biotin = "Biotin"
-        tmpString = self.peptideString ##get the peptide string extracted from the csv document
-        if Biotin in tmpString:
-            isPeptide = True
-        else:
-            isPeptide = False
-        return isPeptide
-    
     ##creating Biotin Dictionary;
     @staticmethod ##this can be run using a passed list, without needing to use class.method or object.method name
     def BiotinList(peptideEntireList): #pass a list as a parameter - has to be a list of peptides
@@ -140,9 +129,10 @@ class Peptide:
         i = 0
         while i <= len(peptideEntireList): ##iterate along all the peptides
             tmpPeptide = peptideEntireList[i] #creating a temp variable to hold the peptide's details
-            tmpBiotin = tmpPeptide.is_Biotin() #is_Biotin method should run on the peptide; return boolean
-            if(tmpBiotin == True):
-                biotinList.append(tmpPeptide) #extends the biotin list by adding the details of the peptide; unsure whether to use append or extend here
+            Biotin = "Biotin"
+            tmpString = tmpPeptide.peptideString ##get the peptide string extracted from the csv document
+            if Biotin in tmpString:
+                biotinList.append(tmpPeptide) 
                 i+1
             else:
                 i+1 #if false, will continue iterating through the list
