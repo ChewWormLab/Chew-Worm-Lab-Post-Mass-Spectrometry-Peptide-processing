@@ -1,4 +1,4 @@
-from peptideClass import Peptide  ##this is required to import the class from the code file
+from peptideClass_copy import Peptide  ##this is required to import the class from the code file
 
 ##main method
 test_EntireList = Peptide.instantiateFromCSV() ##need to pass the Peptide class as a parameter for the instantiate from CSV method
