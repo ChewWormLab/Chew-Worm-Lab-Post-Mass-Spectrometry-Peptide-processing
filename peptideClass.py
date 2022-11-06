@@ -1,4 +1,4 @@
-import csv ##import the csv libarary - required to read the csv file
+import csv ##import the csv libary - required to read the csv file
 ##creating a peptide "class" i.e. blueprint for an instance of each peptide
 class Peptide:
     ##inside the class, will create methods or "functions"
@@ -107,7 +107,7 @@ class Peptide:
             reader = csv.DictReader(f)  ##reads f file as python dictionary; method from csv library, creates dictionary variable named "reader"
             peptideDict = list(reader) ##converts python dictionary into a list
             entireList = []
-        for peptide in peptideDict:
+        for peptide in peptideDict: ##peptide referring to an index of the python list? 
             entireList.append(Peptide( ##instantiating objects from csv using constructor; note appending each object to new list called entireList
                 query = int(peptide.get('Query')), ##note that 'title" needs to match column headers
                 observed = float(peptide.get('Observed')),
@@ -121,6 +121,7 @@ class Peptide:
                 peptide_String = peptide.get('Peptide'),
             ))
         return entireList #return the list as a variable of all the peptides in the csv document
+    
     
     ##creating Biotin Dictionary;
     @staticmethod ##this can be run using a passed list, without needing to use class.method or object.method name
@@ -156,4 +157,3 @@ class Peptide:
     #     with open('C:\Users\Ericka\Desktop\Peptide_MS\sequenceList.txt', 'w') as f: #note, users need to add a file path and name (with file type) in this step - this code is set to create a text file in EA's working folder
     #         for sequence in sequenceList: #iterate over a list and write the sequences into the new file
     #             f.write("%s\n" % sequence)
-        
