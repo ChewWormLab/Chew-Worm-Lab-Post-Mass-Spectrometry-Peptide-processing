@@ -128,15 +128,13 @@ class Peptide:
     def BiotinList(peptideEntireList): #pass a list as a parameter - has to be a list of peptides
         biotinList = []
         i = 0
-        while i <= len(peptideEntireList): ##iterate along all the peptides
+        while i < len(peptideEntireList): ##iterate along all the peptides
             tmpPeptide = peptideEntireList[i] #creating a temp variable to hold the peptide's details
             Biotin = "Biotin"
-            tmpString = tmpPeptide.peptideString ##get the peptide string extracted from the csv document
+            tmpString = tmpPeptide.peptideString ##get the peptide string extracted from the peptide object
             if Biotin in tmpString:
                 biotinList.append(tmpPeptide) 
-                i+1
-            else:
-                i+1 #if false, will continue iterating through the list
+            i +=1
         return biotinList
     
     # ##need to iterate through the biotin list, get JUST the sequences and export to a txt file for Blast seq

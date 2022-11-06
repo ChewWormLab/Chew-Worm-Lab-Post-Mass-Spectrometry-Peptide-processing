@@ -12,8 +12,8 @@ print(testString)
 print(len(test_EntireList))
 ##testing the biotin sorting method from the list
 print("test!")
-# test_BiotinList = Peptide.BiotinList(test_EntireList) #Runs out of memory; iteration of while loop
-# print(len(test_BiotinList))
+test_BiotinList = Peptide.BiotinList(test_EntireList) #Runs out of memory; iteration of while loop
+print(len(test_BiotinList))
 
 
 
