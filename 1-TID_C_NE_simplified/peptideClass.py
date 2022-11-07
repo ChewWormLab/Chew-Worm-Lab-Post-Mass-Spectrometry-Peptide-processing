@@ -105,53 +105,51 @@ class Peptide:
     ##generate list of biotinylated peptide objects!
     @classmethod
     def BiotinListFromCSV(cls):
-        with open('Peptide_Practice.csv', 'r') as f: ##open and read csv file, converts to f variable
+        with open('1_TID_C_NE_simplified.csv', 'r') as f: ##CHANGE NAME OF CSV FILE TO FILE TO BE READ
             reader = csv.DictReader(f)  ##reads f file as python dictionary; method from csv library, creates dictionary variable named "reader"
             peptideDict = list(reader) ##converts python dictionary into a list
             BiotinList = []
             Biotin = "Biotin"
-        for peptide in peptideDict: ##peptide referring to an index of the python list? 
-            Peptide( ##instantiating objects from csv using constructor; note appending each object to new list called entireList
-                query = int(peptide.get('Query')), ##note that 'title" needs to match column headers
-                observed = float(peptide.get('Observed')),
-                mr_Expt = float(peptide.get('Mr(expt)')),
-                mr_Calc = float(peptide.get('Mr(calc)')),
-                ppm = float(peptide.get('ppm')),
-                miss = int(peptide.get('Miss')),
-                score = int(peptide.get('Score')),
-                expect = float(peptide.get('Expect')),
-                rank = int(peptide.get('Rank')),
-                peptide_String = peptide.get('Peptide'),
-            )
-            if Biotin in peptide.peptide_String: #if the word "biotin" is in peptide string, will add peptide to the list, else continues
-                BiotinList.append(peptide)
+        for peptide in peptideDict: ##for each index of the dictionary 
+            if Biotin in peptide.get('Peptide'): #if the word "biotin" is in peptide string, create the object and append to the list
+                BiotinList.append(Peptide( ##instantiating objects from csv using constructor; note appending each object to new list called entireList
+                    query = int(peptide.get('Query')), ##note that 'title" needs to match column headers
+                    observed = float(peptide.get('Observed')),
+                    mr_Expt = float(peptide.get('Mr(expt)')),
+                    mr_Calc = float(peptide.get('Mr(calc)')),
+                    ppm = float(peptide.get('ppm')),
+                    miss = int(peptide.get('Miss')),
+                    score = int(peptide.get('Score')),
+                    expect = float(peptide.get('Expect')),
+                    rank = int(peptide.get('Rank')),
+                    peptide_String = peptide.get('Peptide'),
+                ))
         return BiotinList #return the list as a variable of all the biotinylated peptides in the csv document
     
     ##generate list of Non biotinylated peptide objects!
     @classmethod
     def noBiotinListFromCSV(cls):
-        with open('Peptide_Practice.csv', 'r') as f: ##open and read csv file, converts to f variable
+        with open('1_TID_C_NE_simplified.csv', 'r') as f: ##open and read csv file, converts to f variable
             reader = csv.DictReader(f)  ##reads f file as python dictionary; method from csv library, creates dictionary variable named "reader"
             peptideDict = list(reader) ##converts python dictionary into a list
             noBiotinList = []
             Biotin = "Biotin"
-        for peptide in peptideDict: ##peptide referring to an index of the python list? 
-            Peptide( ##instantiating objects from csv using constructor; note appending each object to new list called entireList
-                query = int(peptide.get('Query')), ##note that 'title" needs to match column headers
-                observed = float(peptide.get('Observed')),
-                mr_Expt = float(peptide.get('Mr(expt)')),
-                mr_Calc = float(peptide.get('Mr(calc)')),
-                ppm = float(peptide.get('ppm')),
-                miss = int(peptide.get('Miss')),
-                score = int(peptide.get('Score')),
-                expect = float(peptide.get('Expect')),
-                rank = int(peptide.get('Rank')),
-                peptide_String = peptide.get('Peptide'),
-            )
-            if Biotin in peptide.peptide_String: #if the word "biotin" is in peptide string, skip
-                continue 
+        for peptide in peptideDict: 
+            if Biotin in peptide.get('Peptide'): ##skip peptide if string contains biotin
+                continue
             else:
-                noBiotinList.append(peptide) # if the word "biotin" is in the peptide string, add to list
+                noBiotinList.append(Peptide( ##instantiating objects from csv using constructor; note appending each object to new list called entireList
+                    query = int(peptide.get('Query')), ##note that 'title" needs to match column headers
+                    observed = float(peptide.get('Observed')),
+                    mr_Expt = float(peptide.get('Mr(expt)')),
+                    mr_Calc = float(peptide.get('Mr(calc)')),
+                    ppm = float(peptide.get('ppm')),
+                    miss = int(peptide.get('Miss')),
+                    score = int(peptide.get('Score')),
+                    expect = float(peptide.get('Expect')),
+                    rank = int(peptide.get('Rank')),
+                    peptide_String = peptide.get('Peptide'),
+                ))
         return noBiotinList #return the list as a variable of all the biotinylated peptides in the csv document
     
     ##Generate Peptide Amino Acid String (necessary for BLAST list generation)
