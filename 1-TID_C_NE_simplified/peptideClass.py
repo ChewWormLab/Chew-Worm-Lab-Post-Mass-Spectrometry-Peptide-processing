@@ -192,3 +192,6 @@ class Peptide:
         for i in range(len(aminoAcidList)):
             blastFile.write(">"+ str(queryList[i]) + "\n" + aminoAcidList[i] + "\n")
         blastFile.close
+    
+    ##method for Blast sequencing (not required because can do it online - not running millions of hits)
+    
