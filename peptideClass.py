@@ -123,7 +123,7 @@ class Peptide:
         return entireList #return the list as a variable of all the peptides in the csv document
     
     
-    ##creating Biotin Dictionary;
+    ##creating Biotin List;
     @staticmethod ##this can be run using a passed list, without needing to use class.method or object.method name
     def BiotinList(peptideEntireList): #pass a list as a parameter - has to be a list of peptides
         biotinList = []
@@ -137,21 +137,41 @@ class Peptide:
             i +=1
         return biotinList
     
-    # ##need to iterate through the biotin list, get JUST the sequences and export to a txt file for Blast seq
-    # def blastList(biotinList):
-    #     blastPeptides = []
-    #     sequenceList = []
-    #     for i in biotinList:
-    #         tmpPep = biotinList[i]
-    #         tmpString = tmpPep.peptideString()
-    #         blastPeptides[i] = tmpString #creating a list of just the sequences
-    #     ##need to split the sequence strings at each point to only have the sequence, no commentary
-    #     for i in blastPeptides:
-    #         tmpStr = blastPeptides[i]
-    #         splitString = tmpStr.split("+",1) #this should split at the + symbol, with a  maximum of 2 elements
-    #         seqString = splitString[0] #this should return the string at index 0 AKA the sequence (hopefully!)
-    #         sequenceList.append(seqString) #adds sequence to the new List 
-    #     ##need to write the new blast List to a txt file
-    #     with open('C:\Users\Ericka\Desktop\Peptide_MS\sequenceList.txt', 'w') as f: #note, users need to add a file path and name (with file type) in this step - this code is set to create a text file in EA's working folder
-    #         for sequence in sequenceList: #iterate over a list and write the sequences into the new file
-    #             f.write("%s\n" % sequence)
+    ##Generate Peptide Amino Acid String
+    @staticmethod
+    def aminoAcidList(peptideList):
+        peptideStringList = [] #generating an empty list to hold the strings
+        sequenceList =[] #should hold only the amino acid sequences
+        i = 0
+        j = 0
+        while i < len(peptideList):
+            tmpPep = peptideList[i]
+            tmpString = tmpPep.peptideString
+            peptideStringList.append(tmpString) #creating a list of just the sequences
+            i +=1
+        ##need to split the sequence strings at each point to only have the sequence, no commentary
+        while j < len(peptideStringList):
+            tmpStr = peptideStringList[j]
+            splitString = tmpStr.split("+",1) #this should split at the + symbol, with a  maximum of 2 elements
+            seqString = splitString[0] #this should return the string at index 0 AKA the sequence (hopefully!)
+            sequenceList.append(seqString) #adds sequence to the new List 
+            j += 1
+        return sequenceList
+    @staticmethod
+    def queryList(peptideList):
+        queryList = []
+        i = 0
+        while i < len(peptideList):
+            tmpPep = peptideList[i]
+            tmpQuery = tmpPep.query
+            queryList.append(tmpQuery)
+            i += 1
+        return queryList
+
+    ###need to iterate through the biotin list, get JUST the sequences and export to a text file for Blast seq
+    @staticmethod
+    def blastList(queryList, aminoAcidList):
+        blastFile = open("blastSeq.txt", "w")
+        for i in range(len(aminoAcidList)):
+            blastFile.write(">"+ str(queryList[i]) + "\n" + aminoAcidList[i] + "\n")
+        blastFile.close
