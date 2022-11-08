@@ -8,7 +8,7 @@ class Peptide:
         assert query > 0, f"Query {query} is equal to, or less than zero, check that the values have been passed" ##query has to not be of the value 0; f" is a format string prompt for the error message
         ##assign the arguements to the attributes of the class
         self.__uniqueStatus ="unknown" ##will not be set at initalisation of object
-        self.__biotinylated = False ##will not be set at initalisation of object
+        self.__proteinList = []
         self.__query = query
         self.__observed = observed
         self.__mr_Expt = mr_Expt
@@ -58,6 +58,9 @@ class Peptide:
     @property
     def uniqueStatus(self):
         return self.__uniqueStatus
+    @property
+    def proteinList(self):
+        return self.__proteinList
     
     ##Mutators
     @query.setter
@@ -98,6 +101,9 @@ class Peptide:
     @uniqueStatus.setter
     def uniqueStatus(self, uniqueString):
         self.uniqueStatus = uniqueString
+    @proteinList.setter
+    def proteinList(self,proteinList):
+        self.__proteinList = proteinList
        
     ##note CSV values come up with double query symbol and triple quotation marks in excel document; EA's cheap fix is to open CSV file in vs code, use csv viewer and select all instances of query symbol and "" using ctrl+F2 and delete
     ##note csv file needs to have " " around string - select column and follow https://lenashore.com/2012/04/how-to-add-quotes-to-your-cells-in-excel-automatically/ instructions
@@ -192,6 +198,4 @@ class Peptide:
         for i in range(len(aminoAcidList)):
             blastFile.write(">"+ str(queryList[i]) + "\n" + aminoAcidList[i] + "\n")
         blastFile.close
-    
-    ##method for Blast sequencing (not required because can do it online - not running millions of hits)
     
