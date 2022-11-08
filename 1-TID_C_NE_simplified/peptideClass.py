@@ -53,9 +53,6 @@ class Peptide:
     def peptideString(self): ##the most important one - will be called in other methods
         return self.__peptide_String
     @property
-    def biotin(self):
-        return self.__biotinylated
-    @property
     def uniqueStatus(self):
         return self.__uniqueStatus
     @property
@@ -95,9 +92,6 @@ class Peptide:
     @peptideString.setter
     def peptideString(self, pepString): ##the most important one - will be called in other methods
         self.__peptide_String = pepString
-    @biotin.setter
-    def biotin(self, biotinBool): #needs to be passed a boolean value
-        self.biotinylated = biotinBool
     @uniqueStatus.setter
     def uniqueStatus(self, uniqueString):
         self.uniqueStatus = uniqueString
