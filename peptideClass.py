@@ -8,7 +8,6 @@ class Peptide:
         assert query > 0, f"Query {query} is equal to, or less than zero, check that the values have been passed" ##query has to not be of the value 0; f" is a format string prompt for the error message
         ##assign the arguements to the attributes of the class
         self.__uniqueStatus ="unknown" ##will not be set at initalisation of object
-        self.__biotinylated = False ##will not be set at initalisation of object
         self.__query = query
         self.__observed = observed
         self.__mr_Expt = mr_Expt
@@ -18,7 +17,9 @@ class Peptide:
         self.__score = score
         self.__expect = expect
         self.__rank = rank
-        self.__peptide_String = peptide_String ##these are instance attributes (not class attributes)
+        self.__peptide_String = peptide_String 
+        self.__protDict = {} ##start with empty dictionary 
+        ##these are instance attributes (not class attributes)
         ##note that float assigned variables can be passed integers
     
     ##getters for the peptide class - this is extra code written in case there needs to be ongoing modification
@@ -53,11 +54,11 @@ class Peptide:
     def peptideString(self): ##the most important one - will be called in other methods
         return self.__peptide_String
     @property
-    def biotin(self):
-        return self.__biotinylated
-    @property
     def uniqueStatus(self):
         return self.__uniqueStatus
+    @property
+    def protDictionary(self):
+        return self.__protDict
     
     ##Mutators
     @query.setter
@@ -92,12 +93,12 @@ class Peptide:
     @peptideString.setter
     def peptideString(self, pepString): ##the most important one - will be called in other methods
         self.__peptide_String = pepString
-    @biotin.setter
-    def biotin(self, biotinBool): #needs to be passed a boolean value
-        self.biotinylated = biotinBool
     @uniqueStatus.setter
     def uniqueStatus(self, uniqueString):
         self.uniqueStatus = uniqueString
+    @protDictionary.setter
+    def protDictionary(self, protDict):
+        self.__protDict = protDict
        
     ##note CSV values come up with double query symbol and triple quotation marks in excel document; EA's cheap fix is to open CSV file in vs code, use csv viewer and select all instances of query symbol and "" using ctrl+F2 and delete
     ##note csv file needs to have " " around string - select column and follow https://lenashore.com/2012/04/how-to-add-quotes-to-your-cells-in-excel-automatically/ instructions
