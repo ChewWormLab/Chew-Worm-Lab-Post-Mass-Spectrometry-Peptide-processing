@@ -18,7 +18,8 @@ class Peptide:
         self.__score = score
         self.__expect = expect
         self.__rank = rank
-        self.__peptide_String = peptide_String ##these are instance attributes (not class attributes)
+        self.__peptide_String = peptide_String 
+        ##these are instance attributes (not class attributes)
         ##note that float assigned variables can be passed integers
     
     ##getters for the peptide class - this is extra code written in case there needs to be ongoing modification
