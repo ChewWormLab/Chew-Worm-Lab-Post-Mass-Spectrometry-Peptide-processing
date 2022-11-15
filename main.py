@@ -1,7 +1,8 @@
 from peptideClass import Peptide  ##this is required to import the class from the code file
 
 ##main method
-test_EntireList = Peptide.instantiateFromCSV() ##need to pass the Peptide class as a parameter for the instantiate from CSV method
+FileNameTest = 'Peptide_Practice.csv'
+test_EntireList = Peptide.BiotinListFromCSV(FileNameTest) ##need to pass the Peptide class as a parameter for the instantiate from CSV method
 ##tests of code
 testPeptide = test_EntireList[1]
 queryTest = testPeptide.query

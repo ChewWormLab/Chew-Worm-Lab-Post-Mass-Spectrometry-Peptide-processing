@@ -164,7 +164,7 @@ class Peptide:
             tmpPep = peptideList[i]
             tmpString = tmpPep.peptideString
             peptideStringList.append(tmpString) #creating a list of just the sequences
-            i +=1 
+            i +=1
         ##need to split the sequence strings at each point to only have the sequence, no commentary
         while j < len(peptideStringList):
             tmpStr = peptideStringList[j]

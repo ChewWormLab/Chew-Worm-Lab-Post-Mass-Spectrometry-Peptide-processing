@@ -1,5 +1,4 @@
 from Bio.Blast import NCBIXML
-from Bio.Blast import Record
 ##this script will parse the XML file
 class Protein:
     ##constructor for protein) 
@@ -36,8 +35,7 @@ class Protein:
     ##static method to create a list object filled with protein objects
     @staticmethod
     def parseBlast(blast_XML_File): #pass the XML file as a parameter
-        blast_File = open(blast_XML_File) #create a handle for the open XML file
-        blast_records = NCBIXML.parse(blast_File) #this should return a file 
+        blast_records = NCBIXML.parse(blast_XML_File) #this should return a file 
         proteinList = [] 
         for alignment in blast_records.alignment: ##https://lists.open-bio.org/pipermail/biopython/2012-February/013895.html
             for hsp in alignment.hsps:
@@ -70,8 +68,6 @@ class Protein:
             protDescript[i] = tmpDescript
             i = i + 1
         return protDescript
-    
-            
         
         
 
