@@ -20,3 +20,4 @@ print(testQueryOnly)
 Peptide.blastList(testQueryOnly,testSequenceOnly) ##Actually works!!!!!!!!!!!!!!!
 
 
+

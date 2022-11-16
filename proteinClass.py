@@ -35,13 +35,14 @@ class Protein:
     ##static method to create a list object filled with protein objects
     @staticmethod
     def parseBlast(blast_XML_File): #pass the XML file as a parameter
-        blast_records = NCBIXML.parse(blast_XML_File) #this should return a file 
         proteinList = [] 
-        for alignment in blast_records.alignment: ##https://lists.open-bio.org/pipermail/biopython/2012-February/013895.html
-            for hsp in alignment.hsps:
-                if hsp.expect < 0.05 and hsp.identities == 100:
-                    query = blast_records.header.query #wtf
-                    proteinList.append(Protein(alignment.title,query,hsp.expect))
+        blast_records = NCBIXML.parse(blast_XML_File) #this should return a file 
+        for blast_record in blast_records: ##https://lists.open-bio.org/pipermail/biopython/2012-February/013895.html
+            for alignment in blast_record.alignments:    
+                for hsp in alignment.hsps:
+                    if hsp.expect < 0.05 and hsp.identities == 100:
+                        query = blast_record.header.query #wtf
+                        proteinList.append(Protein(alignment.title,query,hsp.expect))                    
         return proteinList
     
     ##protein method to count the number of peptides + assign new count to protein object

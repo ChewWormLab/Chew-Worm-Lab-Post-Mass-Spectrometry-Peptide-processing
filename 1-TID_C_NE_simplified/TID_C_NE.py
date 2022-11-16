@@ -9,6 +9,7 @@ print(queryTest)
 print(type(TID_BiotinList[1])) ##should return peptide object = works
 print(len(TID_BiotinList))
 
+##Pre-Processing Step
 TID_noBiotinList = Peptide.noBiotinListFromCSV()
 print(len(TID_noBiotinList))
 
@@ -20,3 +21,5 @@ nobiotinList_QueryOnly = Peptide.queryList(TID_noBiotinList)
 
 print(biotinList_QueryOnly)
 Peptide.blastList(biotinList_QueryOnly,biotinList_SequenceOnly) 
+
+##Post-Blast Processing
