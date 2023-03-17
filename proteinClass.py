@@ -1,5 +1,4 @@
-from Bio.Blast import NCBIXML
-##this script will parse the XML file
+from Bio.Blast import NCBIXML ##this package is required to parse the XML file
 class Protein:
     ##constructor for protein) 
     def __init__(self, protein_descript:str, peptideQuery:str, eValue:float):
@@ -35,26 +34,27 @@ class Protein:
     ##static method to create a list object filled with protein objects
     @staticmethod
     def parseBlast(blast_XML_File): #pass the XML file as a parameter
-        proteinList = [] 
+        sampleproteinList = [] 
         e_value_threshold = 0.05
-        blast_records = NCBIXML.parse(blast_XML_File) #this should return a file 
-        i = 0
-        for blast_record in blast_records: ##https://lists.open-bio.org/pipermail/biopython/2012-February/013895.html
-            for alignment in blast_record.alignments:
-                print("if here, is iterating over alignment in blast_record")
-                for hsp in alignment.hsps:
-                    print("if here, is iterating over hsp elements for each alignment")
-                    i = i + 1
-                    print(i) ##for some reason not iterating as a list?
-                    print(type(hsp.expect))    
-                    if hsp.expect < e_value_threshold:
-                        # query = blast_record.header.query #wtf
-                        # proteinList.append(Protein(alignment.title,query,hsp.expect))
-                        i = i + 1
-                        print("if here, is iterating over hsp elements < 0.05")
-                        print(i)
-                
-        return proteinList
+        blast_records = NCBIXML.parse(blast_XML_File, debug=0) #returns a list of Blast Record Objects
+        try:
+            for blast_record in blast_records: ##https://lists.open-bio.org/pipermail/biopython/2012-February/013895.html
+                peptideQueryNum = blast_record.query
+                print("test1")
+                for alignment in blast_record.alignments:
+                    for hsp in alignment.hsps:
+                        if hsp.expect < e_value_threshold:
+                            sampleproteinList.append(Protein(alignment.title,peptideQueryNum,hsp.expect))
+                            print("if here, is iterating over hsp elements < 0.05")
+        except ValueError:
+            for blast_record in blast_records: ##https://lists.open-bio.org/pipermail/biopython/2012-February/013895.html
+                peptideQueryNum = blast_record.query
+                for alignment in blast_record.alignments:
+                    for hsp in alignment.hsps:
+                        if hsp.expect < e_value_threshold:
+                            sampleproteinList.append(Protein(alignment.title,peptideQueryNum,hsp.expect))
+                            print("if here, is iterating over hsp elements < 0.05")
+        return sampleproteinList
     
     ##protein method to count the number of peptides + assign new count to protein object
     def countPeptides(self):
@@ -75,6 +75,7 @@ class Protein:
         i = 0
         protDescript = []
         while i < len(proteinList):
+            print(i)
             tmpProtein = proteinList[i]
             tmpDescript = tmpProtein.description
             protDescript[i] = tmpDescript
