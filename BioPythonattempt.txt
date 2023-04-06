@@ -1,0 +1,26 @@
+
+    # ##note, using BioPython package installed via Conda
+    # ##static method to create a list object filled with protein objects
+    # @staticmethod
+    # def parseBlast(blast_XML_File): #pass the XML file as a parameter
+    #     sampleproteinList = [] 
+    #     e_value_threshold = 0.05
+    #     blast_records = NCBIXML.parse(blast_XML_File, debug=0) #returns a list of Blast Record Objects
+    #     try:
+    #         for blast_record in blast_records: ##https://lists.open-bio.org/pipermail/biopython/2012-February/013895.html
+    #             peptideQueryNum = blast_record.query
+    #             print("test1")
+    #             for alignment in blast_record.alignments:
+    #                 for hsp in alignment.hsps:
+    #                     if hsp.expect < e_value_threshold:
+    #                         sampleproteinList.append(Protein(alignment.title,peptideQueryNum,hsp.expect))
+    #                         print("if here, is iterating over hsp elements < 0.05")
+    #     except ValueError:
+    #         for blast_record in blast_records: ##https://lists.open-bio.org/pipermail/biopython/2012-February/013895.html
+    #             peptideQueryNum = blast_record.query
+    #             for alignment in blast_record.alignments:
+    #                 for hsp in alignment.hsps:
+    #                     if hsp.expect < e_value_threshold:
+    #                         sampleproteinList.append(Protein(alignment.title,peptideQueryNum,hsp.expect))
+    #                         print("if here, is iterating over hsp elements < 0.05")
+    #     return sampleproteinList

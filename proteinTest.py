@@ -1,5 +1,5 @@
 from peptideClass import Peptide  ##this is required to import the class from the code file
-from proteinClass import Protein 
+from hitClass import Protein 
 
 testXML = open("RKS984Z401N-Alignment.xml") #only has 20 peptides - is test
 testProteinList = Protein.parseBlast(testXML)
