@@ -132,7 +132,7 @@ class HSP:
                         hspQueryLen = len(hsp.query)
                         if ((hsp.ident_num/hsp.aln_span)*100) == 100 and hspHitLen == hspQueryLen and hsp.gap_num == 0 and hsp.evalue <0.05: ##100% identity + length of query seq is same as length of hit + no gap + eVALUE<0.05,ask AR about redundancy
                             hspObjects.append(HSP(
-                                query = int(hsp.query_id),
+                                query = int(float((hsp.query_id)),
                                 geneId=(hsp.hit_id),
                                 proteinDescript= (hsp.hit_description),
                                 hitSequence = str((hsp.hit).seq),
