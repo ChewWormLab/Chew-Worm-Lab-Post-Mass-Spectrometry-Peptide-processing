@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>##PASTE TITLE OF HTML HERE  (recommended to include "Peptide matches not assigned to protein hits" to distinguish from original HTML") ## </title>
+	
+</head>
+<body>
+	##paste table here (delete this line)
+
+</body>
+</html>
