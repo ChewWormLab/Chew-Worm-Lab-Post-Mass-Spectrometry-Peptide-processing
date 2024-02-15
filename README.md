@@ -9,7 +9,7 @@ The LC-MSMS and subsequent Mascot processing was conducted by Dr Anne Poljak (UN
 
 Due to a large number of non-confident hits per sample, this code was written to allow for the identification of their associated peptides using the NCBI reference proteins database (refseq_protein).
 
-This code generates 2 lists of biotinylated and non-biotinylated peptide sequences and their associated proteins.
+This code generates 2 lists of biotinylated and non-biotinylated peptide sequences and their associated proteins in a CSV format.
 
 ## Packages used for code processing:
 This code was written for Windows OS and has only been used on these systems. This code was written in Python 3.9 and uses the following packages/libraries.
