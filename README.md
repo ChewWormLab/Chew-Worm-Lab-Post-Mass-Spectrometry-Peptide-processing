@@ -11,6 +11,8 @@ Due to a large number of non-confident hits per sample, this code was written to
 
 This code generates 2 lists of biotinylated and non-biotinylated peptide sequences and their associated proteins in a CSV format.
 
+This program is released under the Creativer Commons Attribution Noncommercial Licence 4.0 Deed (CC BY-NC).  Please see [LICENSE-CC-BY-NC](https://github.com/Ericka-A/Chew-Worm-Lab-Post-Mass-Spectrometry-Peptide-processing/blob/main/LICENSE-CC-BY-NC-4.0.md). More information can be found at the [Creative commons website](https://creativecommons.org/licenses/by-nc/4.0/)
+
 ## Packages used for code processing:
 This code was written for Windows OS and has only been used on these systems. This code was written in Python 3.9 and uses the following packages/libraries.
 - Biopython 1.78
