@@ -23,3 +23,5 @@ Cock, P.J.A. et al. Biopython: freely available Python tools for computational m
 ANACONDA SOFTWARE DISTRIBUTION. November, 2016. Anaconda: Computer software [Online]. Vers. 2-2.4.0. Available: https://anaconda.com [Accessed 2023].THE PANDAS DEVELOPMENT TEAM. February, 2020. 
 
 pandas-dev/pandas: Pandas [Online]. Latest ver.: Zenodo. Available: https://doi.org/10.5281/zenodo.3509134 [Accessed 2023].
+
+pBLAST [Internet]. Bethesda (MD): National Library of Medicine (US), National Center for Biotechnology Information; 2004 – [ 2023]. Available from: https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome 
