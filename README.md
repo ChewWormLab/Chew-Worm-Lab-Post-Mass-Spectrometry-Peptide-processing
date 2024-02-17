@@ -17,3 +17,9 @@ This code was written for Windows OS and has only been used on these systems. Th
 - Pandas    1.5.3
 - Anaconda 2023.03
 ## Citations
+
+Cock, P.J.A. et al. Biopython: freely available Python tools for computational molecular biology and bioinformatics. Bioinformatics 2009 Jun 1; 25(11) 1422-3 https://doi.org/10.1093/bioinformatics/btp163 pmid:19304878
+
+ANACONDA SOFTWARE DISTRIBUTION. November, 2016. Anaconda: Computer software [Online]. Vers. 2-2.4.0. Available: https://anaconda.com [Accessed 2023].THE PANDAS DEVELOPMENT TEAM. February, 2020. 
+
+pandas-dev/pandas: Pandas [Online]. Latest ver.: Zenodo. Available: https://doi.org/10.5281/zenodo.3509134 [Accessed 2023].
